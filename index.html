@@ -21,7 +21,7 @@ transition:8s;
 100%{transform:scale(1.02);}
 }
 
-/* ===== INTRO ===== */
+/* INTRO */
 #intro{
 position:fixed;
 top:0;
@@ -52,7 +52,7 @@ animation:latido 4s infinite ease-in-out;
 100%{opacity:.6;}
 }
 
-/* ===== CONTENIDO ===== */
+/* CONTENIDO */
 #contenido{
 display:none;
 height:100vh;
@@ -92,7 +92,7 @@ left:50%;
 transform:translate(-50%,-50%);
 }
 
-/* ===== FOTOS ===== */
+/* FOTOS */
 .foto{
 position:absolute;
 top:50%;
@@ -114,7 +114,7 @@ background-position:center;
 #foto4{background-image:url('pio3.jpg');}
 #foto5{background-image:url('pio4.jpg');}
 
-/* ===== CARTA ===== */
+/* CARTA */
 .carta{
 position:absolute;
 top:50%;
@@ -131,7 +131,7 @@ opacity:0;
 transition:4s;
 }
 
-/* ===== FINAL ===== */
+/* FINAL */
 .final-frase{
 position:absolute;
 top:60%;
@@ -194,12 +194,12 @@ border:0;
 
 <body>
 
-<!-- ===== INTRO ===== -->
-<div id="intro" onclick="iniciar()">
+<!-- INTRO -->
+<div id="intro">
 <h1>Toca para ver lo que ya estaba escrito ✨</h1>
 </div>
 
-<!-- ===== CONTENIDO ===== -->
+<!-- CONTENIDO -->
 <div id="contenido">
 
 <canvas id="estrellas"></canvas>
@@ -264,8 +264,11 @@ let i=0;
 let texto=document.getElementById("texto");
 let musica;
 
-/* ===== INICIO ===== */
+/* INICIO */
 function iniciar(){
+if(iniciar.activado) return;
+iniciar.activado=true;
+
 document.getElementById("intro").style.opacity="0";
 
 setTimeout(()=>{
@@ -282,7 +285,12 @@ mostrar();
 },2500);
 }
 
-/* ===== TEXTO ===== */
+/* EVENTOS MOVIL + PC */
+const intro = document.getElementById("intro");
+intro.addEventListener("click", iniciar);
+intro.addEventListener("touchstart", iniciar);
+
+/* TEXTO */
 function escribir(t,cb){
 let j=0;
 texto.innerHTML="";
@@ -296,7 +304,7 @@ setTimeout(cb,2500);
 },60);
 }
 
-/* ===== SECUENCIA ===== */
+/* SECUENCIA */
 function mostrar(){
 if(i<escenas.length){
 if(escenas[i]==""){
@@ -373,7 +381,7 @@ document.body.style.filter="brightness(0.4)";
 }
 }
 
-/* ===== FADE MUSICA ===== */
+/* FADE MUSICA */
 function fadeOutMusica(){
 let vol=1;
 let fade=setInterval(()=>{
@@ -385,7 +393,7 @@ clearInterval(fade);
 },300);
 }
 
-/* ===== CONTADOR ===== */
+/* CONTADOR */
 function contador(){
 let inicio=new Date("2026-01-06");
 let hoy=new Date();
@@ -396,7 +404,7 @@ document.getElementById("contador").innerHTML=
 contador();
 setInterval(contador,86400000);
 
-/* ===== POLLITOS ===== */
+/* POLLITOS */
 for(let p=0;p<25;p++){
 let pollito=document.createElement("div");
 pollito.className="pollito";
@@ -406,7 +414,7 @@ pollito.style.top=Math.random()*100+"%";
 document.body.appendChild(pollito);
 }
 
-/* ===== ESTRELLAS ===== */
+/* ESTRELLAS */
 let canvas=document.getElementById("estrellas");
 let ctx=canvas.getContext("2d");
 canvas.width=window.innerWidth;
