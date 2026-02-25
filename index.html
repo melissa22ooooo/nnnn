@@ -2,10 +2,12 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pio Pio ❤️🐥</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Georgia',serif;}
+
 body{
 background:black;
 overflow:hidden;
@@ -20,32 +22,55 @@ animation:respirar 20s infinite alternate ease-in-out;
 
 #intro{
 position:fixed;
-width:100%;height:100%;
+top:0;
+left:0;
+width:100%;
+height:100vh;
 background:black;
-display:flex;align-items:center;justify-content:center;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
 cursor:pointer;
 z-index:10;
 transition:2s;
 text-align:center;
+padding:20px;
 }
 
-#contenido{display:none;height:100vh;width:100%;position:relative;}
+#intro h1{
+font-size:2em;
+opacity:.85;
+}
 
-canvas{position:absolute;top:0;left:0;z-index:-2;}
+#contenido{
+display:none;
+height:100vh;
+width:100%;
+position:relative;
+}
+
+canvas{
+position:absolute;
+top:0;
+left:0;
+z-index:-2;
+}
 
 #texto{
 position:absolute;
-top:50%;left:50%;
+top:50%;
+left:50%;
 transform:translate(-50%,-50%);
 width:85%;
 text-align:center;
-font-size:2em;
+font-size:1.8em;
 min-height:120px;
 transition:2s;
 }
 
 .nombre{
-font-size:3em;
+font-size:2.5em;
 opacity:0;
 transition:4s;
 text-shadow:0 0 40px rgba(255,255,255,.8);
@@ -53,9 +78,11 @@ text-shadow:0 0 40px rgba(255,255,255,.8);
 
 .foto{
 position:absolute;
-top:50%;left:50%;
+top:50%;
+left:50%;
 transform:translate(-50%,-50%) scale(.85);
-width:280px;height:380px;
+width:260px;
+height:360px;
 border-radius:25px;
 box-shadow:0 0 150px rgba(255,255,255,.6);
 opacity:0;
@@ -69,13 +96,15 @@ background-position:center;
 
 .carta{
 position:absolute;
-top:50%;left:50%;
+top:50%;
+left:50%;
 transform:translate(-50%,-50%) scale(0);
-width:340px;height:230px;
+width:300px;
+height:220px;
 background:rgba(20,20,20,.95);
 border:1px solid rgba(255,255,255,.4);
 border-radius:15px;
-padding:25px;
+padding:20px;
 text-align:center;
 opacity:0;
 transition:4s;
@@ -100,10 +129,15 @@ bottom:20px;
 width:100%;
 text-align:center;
 opacity:.5;
-font-size:1em;
+font-size:.9em;
 }
 
-iframe{position:absolute;width:0;height:0;border:0;}
+iframe{
+position:absolute;
+width:0;
+height:0;
+border:0;
+}
 </style>
 </head>
 
@@ -209,14 +243,17 @@ f1.style.opacity="1";
 
 setTimeout(()=>{
 f1.style.opacity="0";
+
 let f2=document.getElementById("foto2");
 f2.style.opacity="1";
 
 setTimeout(()=>{
 f2.style.opacity="0";
+
 let carta=document.getElementById("carta");
 carta.style.opacity="1";
 carta.style.transform="translate(-50%,-50%) scale(1)";
+
 },5000);
 
 },5000);
