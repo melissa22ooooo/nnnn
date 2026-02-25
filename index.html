@@ -3,98 +3,145 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pio Pio ❤️</title>
+<title>Pio Pio ❤️🐥</title>
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Georgia',serif;}
+
 body{
-margin:0;
 background:black;
-color:white;
-font-family:'Segoe UI',sans-serif;
 overflow:hidden;
+color:white;
+animation:respirar 20s infinite alternate ease-in-out;
+}
+
+@keyframes respirar{
+0%{transform:scale(1);}
+100%{transform:scale(1.02);}
 }
 
 #intro{
 position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
+top:0;
+left:0;
 width:100%;
-height:100%;
+height:100vh;
 background:black;
 display:flex;
+flex-direction:column;
 align-items:center;
 justify-content:center;
+cursor:pointer;
+z-index:10;
+transition:2s;
 text-align:center;
 padding:20px;
-z-index:10;
-cursor:pointer;
 }
 
 #intro h1{
-font-size:22px;
-animation:latido 2s infinite;
+font-size:2em;
+opacity:.85;
 }
 
-@keyframes latido{
-0%{transform:scale(1);}
-50%{transform:scale(1.1);}
-100%{transform:scale(1);}
-}
-
-#video{
+#contenido{
 display:none;
+height:100vh;
+width:100%;
+position:relative;
+}
+
+canvas{
+position:absolute;
+top:0;
+left:0;
+z-index:-2;
+}
+
+#texto{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:85%;
 text-align:center;
-padding:40px 20px;
-animation:fadein 2s ease forwards;
+font-size:1.8em;
+min-height:120px;
+transition:2s;
 }
 
-@keyframes fadein{
-from{opacity:0;}
-to{opacity:1;}
-}
-
-.frase{
+.nombre{
+font-size:2.5em;
 opacity:0;
-margin:30px 0;
-font-size:20px;
-animation:aparecer 3s ease forwards;
+transition:4s;
+text-shadow:0 0 40px rgba(255,255,255,.8);
 }
 
-@keyframes aparecer{
-0%{opacity:0;transform:translateY(20px);}
-100%{opacity:1;transform:translateY(0);}
-}
-
-img{
-width:80%;
-max-width:300px;
-border-radius:20px;
-margin-top:20px;
+/* Cinco imágenes */
+.foto{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) scale(.85);
+width:260px;
+height:360px;
+border-radius:25px;
+box-shadow:0 0 150px rgba(255,255,255,.6);
 opacity:0;
-animation:foto 4s ease forwards;
+transition:4s;
+background-size:cover;
+background-position:center;
 }
 
-@keyframes foto{
-from{opacity:0;transform:scale(0.9);}
-to{opacity:1;transform:scale(1);}
-}
+#foto1{background-image:url('nota.jpg');}
+#foto2{background-image:url('pio.jpg');}
+#foto3{background-image:url('pio2.jpg');}
+#foto4{background-image:url('pio3.jpg');}
+#foto5{background-image:url('pio4.jpg');}
 
-#contador{
-margin-top:40px;
-font-size:18px;
-opacity:0.8;
+/* Carta final */
+.carta{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) scale(0);
+width:300px;
+height:220px;
+background:rgba(20,20,20,.95);
+border:1px solid rgba(255,255,255,.4);
+border-radius:15px;
+padding:20px;
+text-align:center;
+opacity:0;
+transition:4s;
 }
 
 .pollito{
-position:fixed;
-font-size:24px;
-animation:flotar 10s linear infinite;
+position:absolute;
+font-size:18px;
+animation:flotar 10s infinite ease-in-out;
+opacity:.5;
 }
 
 @keyframes flotar{
-0%{transform:translateY(100vh);}
-100%{transform:translateY(-100vh);}
+0%{transform:translateY(0);}
+50%{transform:translateY(-30px);}
+100%{transform:translateY(0);}
+}
+
+#contador{
+position:absolute;
+bottom:20px;
+width:100%;
+text-align:center;
+opacity:.5;
+font-size:.9em;
+}
+
+iframe{
+position:absolute;
+width:0;
+height:0;
+border:0;
 }
 </style>
 </head>
@@ -102,61 +149,199 @@ animation:flotar 10s linear infinite;
 <body>
 
 <div id="intro" onclick="iniciar()">
-<h1>Toca la pantalla... 🖤<br>Hay algo especial para ti, Pio Pio 🐥</h1>
+<h1>Toca para ver lo que ya estaba escrito ✨</h1>
 </div>
 
-<div id="video">
+<div id="contenido">
 
-<div class="frase" style="animation-delay:1s;">HOMBRE TRABAJADOR</div>
-<div class="frase" style="animation-delay:6s;">INTELIGENTE</div>
-<div class="frase" style="animation-delay:11s;">OBRA DE ARTE</div>
-<div class="frase" style="animation-delay:16s;">ÚNICO</div>
-<div class="frase" style="animation-delay:21s;">INIGUALABLE</div>
-<div class="frase" style="animation-delay:26s;">simplemente eres perfecto</div>
+<canvas id="estrellas"></canvas>
 
-<img src="nota.jpg" style="animation-delay:31s;">
-<img src="pio.jpg" style="animation-delay:45s;">
-<img src="pio2.jpg" style="animation-delay:60s;">
-<img src="pio3.jpg" style="animation-delay:75s;">
-<img src="pio4.jpg" style="animation-delay:90s;">
+<div id="texto"></div>
 
-<div class="frase" style="animation-delay:105s;">
-Te amo… más de lo que las palabras pueden explicar ❤️🐥
+<div class="nombre" id="nombre">Pio Pio ❤️🐥</div>
+
+<!-- Cinco imágenes -->
+<div class="foto" id="foto1"></div>
+<div class="foto" id="foto2"></div>
+<div class="foto" id="foto3"></div>
+<div class="foto" id="foto4"></div>
+<div class="foto" id="foto5"></div>
+
+<div class="carta" id="carta">
+<h3>Destino</h3>
+<p>
+simplemente eres perfecto<br><br>
+No eres casualidad.<br>
+Eres algo que estaba escrito<br>
+mucho antes de que yo lo supiera.<br><br>
+Y te elegiría en cualquier universo.
+</p>
 </div>
 
 <div id="contador"></div>
 
+<iframe
+src="https://www.youtube.com/embed/WBvMmwTLmD8?enablejsapi=1&autoplay=1&loop=1&playlist=WBvMmwTLmD8&controls=0"
+allow="autoplay">
+</iframe>
+
 </div>
 
-<audio id="musica" loop>
-<source src="TU_MP3_AQUI.mp3" type="audio/mpeg">
-</audio>
-
 <script>
+
+const escenas=[
+"Algunas almas no se encuentran por accidente...",
+"",
+"No llegaste haciendo ruido.",
+"Llegaste siendo tú.",
+"",
+"Hombre trabajador.",
+"Inteligente.",
+"Inigualable.",
+"",
+"Me gusta cuando te emocionas.",
+"Tus ojos.",
+"Tu risa.",
+"Tu voz.",
+"Tu todo.",
+"",
+"simplemente eres perfecto"
+];
+
+let i=0;
+let texto=document.getElementById("texto");
+
 function iniciar(){
+document.getElementById("intro").style.opacity="0";
+setTimeout(()=>{
 document.getElementById("intro").style.display="none";
-document.getElementById("video").style.display="block";
-document.getElementById("musica").play();
+document.getElementById("contenido").style.display="block";
+mostrar();
+},2000);
 }
 
-let fechaInicio = new Date("2026-01-06"); // CAMBIA ESTA FECHA
-let hoy = new Date();
-let dias = Math.floor((hoy - fechaInicio) / (1000 * 60 * 60 * 24));
+function escribir(t,cb){
+let j=0;
+texto.innerHTML="";
+let inter=setInterval(()=>{
+texto.innerHTML+=t[j];
+j++;
+if(j>=t.length){
+clearInterval(inter);
+setTimeout(cb,2500);
+}
+},60);
+}
 
-document.getElementById("contador").innerHTML =
-"Llevamos " + dias + " días juntos 🖤";
+function mostrar(){
+if(i<escenas.length){
+if(escenas[i]==""){
+setTimeout(()=>{i++;mostrar();},2000);
+}else{
+escribir(escenas[i],()=>{i++;mostrar();});
+}
+}else{
+texto.innerHTML="";
+let nombre=document.getElementById("nombre");
+nombre.style.opacity="1";
 
-function crearPollito(){
-let pollito = document.createElement("div");
-pollito.className = "pollito";
-pollito.innerHTML = "🐥";
-pollito.style.left = Math.random()*100 + "vw";
-pollito.style.animationDuration = (5+Math.random()*5)+"s";
+setTimeout(()=>{
+nombre.style.opacity="0";
+
+/* Transición de imágenes una por una */
+let f1=document.getElementById("foto1");
+f1.style.opacity="1";
+
+setTimeout(()=>{
+f1.style.opacity="0";
+let f2=document.getElementById("foto2");
+f2.style.opacity="1";
+
+setTimeout(()=>{
+f2.style.opacity="0";
+let f3=document.getElementById("foto3");
+f3.style.opacity="1";
+
+setTimeout(()=>{
+f3.style.opacity="0";
+let f4=document.getElementById("foto4");
+f4.style.opacity="1";
+
+setTimeout(()=>{
+f4.style.opacity="0";
+let f5=document.getElementById("foto5");
+f5.style.opacity="1";
+
+setTimeout(()=>{
+f5.style.opacity="0";
+let carta=document.getElementById("carta");
+carta.style.opacity="1";
+carta.style.transform="translate(-50%,-50%) scale(1)";
+},5000);
+
+},5000);
+
+},5000);
+
+},5000);
+
+},5000);
+
+},4000);
+}
+}
+
+function contador(){
+let inicio=new Date("2026-01-06");
+let hoy=new Date();
+let dias=Math.floor((hoy-inicio)/(1000*60*60*24));
+document.getElementById("contador").innerHTML=
+"Han pasado "+dias+" días desde que el universo decidió ✨";
+}
+contador();
+setInterval(contador,86400000);
+
+/* Pollitos flotando */
+for(let p=0;p<25;p++){
+let pollito=document.createElement("div");
+pollito.className="pollito";
+pollito.innerHTML="🐥";
+pollito.style.left=Math.random()*100+"%";
+pollito.style.top=Math.random()*100+"%";
 document.body.appendChild(pollito);
-setTimeout(()=>{pollito.remove();},10000);
 }
 
-setInterval(crearPollito,2000);
+/* Estrellas */
+let canvas=document.getElementById("estrellas");
+let ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let estrellas=[];
+for(let s=0;s<400;s++){
+estrellas.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*1.5,
+a:Math.random()
+});
+}
+
+function animar(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+estrellas.forEach(e=>{
+ctx.beginPath();
+ctx.fillStyle="rgba(255,255,255,"+e.a+")";
+ctx.arc(e.x,e.y,e.r,0,Math.PI*2);
+ctx.fill();
+e.a+= (Math.random()-0.5)*0.05;
+if(e.a<0) e.a=0;
+if(e.a>1) e.a=1;
+});
+requestAnimationFrame(animar);
+}
+animar();
+
 </script>
 
 </body>
