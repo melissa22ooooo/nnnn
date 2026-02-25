@@ -3,169 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pio Pio ❤️🐥</title>
+<title>Pio Pio ❤️</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Georgia',serif;}
-
 body{
+margin:0;
 background:black;
-overflow:hidden;
 color:white;
-animation:respirar 20s infinite alternate ease-in-out;
-}
-
-@keyframes respirar{
-0%{transform:scale(1);}
-100%{transform:scale(1.02);}
+font-family:Arial,sans-serif;
+text-align:center;
 }
 
 #intro{
 position:fixed;
-top:0;
-left:0;
+top:0;left:0;
 width:100%;
 height:100vh;
 background:black;
 display:flex;
-flex-direction:column;
 align-items:center;
 justify-content:center;
 cursor:pointer;
-z-index:10;
-transition:2s;
-text-align:center;
-padding:20px;
-}
-
-#intro h1{
-font-size:2em;
-opacity:.85;
 }
 
 #contenido{
 display:none;
-height:100vh;
-width:100%;
-position:relative;
+padding:40px;
 }
 
-canvas{
-position:absolute;
-top:0;
-left:0;
-z-index:-2;
+img{
+width:80%;
+max-width:300px;
+border-radius:20px;
+margin:10px;
 }
 
-#texto{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-width:85%;
-text-align:center;
-font-size:1.8em;
-min-height:120px;
-transition:2s;
-}
-
-.nombre{
-font-size:2.5em;
-opacity:0;
-transition:4s;
-text-shadow:0 0 40px rgba(255,255,255,.8);
-}
-
-/* IMÁGENES */
-.foto{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%) scale(.85);
-width:260px;
-height:360px;
-border-radius:25px;
-box-shadow:0 0 150px rgba(255,255,255,.6);
-opacity:0;
-transition:4s;
-background-size:cover;
-background-position:center;
-}
-
-#foto1{background-image:url('nota.jpg');}
-#foto2{background-image:url('pio.jpg');}
-#foto3{background-image:url('pio2.jpg');}
-#foto4{background-image:url('pio3.jpg');}
-#foto5{background-image:url('pio4.jpg');}
-
-/* CARTA */
-.carta{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%) scale(0);
-width:300px;
-height:220px;
-background:rgba(20,20,20,.95);
-border:1px solid rgba(255,255,255,.4);
-border-radius:15px;
-padding:20px;
-text-align:center;
-opacity:0;
-transition:4s;
-}
-
-/* FINAL */
 #final{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-text-align:center;
-font-size:22px;
-opacity:0;
-transition:3s;
-}
-
-/* DESPEDIDA */
-#despedida{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-font-size:24px;
-opacity:0;
-transition:3s;
-}
-
-/* POLLITO */
-.pollito{
-position:absolute;
-font-size:24px;
-animation:flotar 10s infinite ease-in-out;
-opacity:.6;
-}
-
-@keyframes flotar{
-0%{transform:translateY(0);}
-50%{transform:translateY(-30px);}
-100%{transform:translateY(0);}
-}
-
-#contador{
-position:absolute;
-bottom:20px;
-width:100%;
-text-align:center;
-opacity:.5;
-font-size:.9em;
-}
-
-iframe{
-position:absolute;
-width:0;
-height:0;
-border:0;
+margin-top:40px;
+font-size:20px;
 }
 </style>
 </head>
@@ -173,243 +48,40 @@ border:0;
 <body>
 
 <div id="intro" onclick="iniciar()">
-<h1>Toca para ver lo que ya estaba escrito ✨</h1>
+<h1>Toca para entrar ❤️🐥</h1>
 </div>
 
 <div id="contenido">
 
-<canvas id="estrellas"></canvas>
+<h2>Pio Pio ❤️🐥</h2>
 
-<div id="texto"></div>
+<img src="nota.jpg">
+<img src="pio.jpg">
+<img src="pio2.jpg">
+<img src="pio3.jpg">
+<img src="pio4.jpg">
 
-<div class="nombre" id="nombre">Pio Pio ❤️🐥</div>
+<p>simplemente eres perfecto</p>
 
-<!-- IMÁGENES -->
-<div class="foto" id="foto1"></div>
-<div class="foto" id="foto2"></div>
-<div class="foto" id="foto3"></div>
-<div class="foto" id="foto4"></div>
-<div class="foto" id="foto5"></div>
-
-<!-- CARTA -->
-<div class="carta" id="carta">
-<h3>Destino</h3>
-<p>
-simplemente eres perfecto<br><br>
-No eres casualidad.<br>
-Eres algo que estaba escrito<br>
-mucho antes de que yo lo supiera.<br><br>
-Y te elegiría en cualquier universo.
-</p>
-</div>
-
-<!-- FINAL -->
 <div id="final">
 Fin.<br>
-Esto no termina aquí.<br>
-El sentimiento permanece.
+Gracias por ser parte de esto.
 </div>
 
-<!-- DESPEDIDA DEL POLLITO -->
-<div id="despedida">
-🐥<br>
-El pollito se despide…<br>
-Gracias por acompañarlo.
-</div>
-
-<div id="contador"></div>
-
-<!-- MÚSICA -->
-<iframe
-src="https://www.youtube.com/embed/L4RPMSW0Gvc?enablejsapi=1&autoplay=1&loop=1&playlist=L4RPMSW0Gvc&controls=0"
-allow="autoplay">
-</iframe>
+<audio id="musica" loop>
+<source src="https://www.youtube.com/embed/L4RPMSW0Gvc" type="audio/mp3">
+</audio>
 
 </div>
 
 <script>
-
-const escenas=[
-"Algunas almas no se encuentran por accidente...",
-"",
-"No llegaste haciendo ruido.",
-"Llegaste siendo tú.",
-"",
-"Hombre trabajador.",
-"Inteligente.",
-"Inigualable.",
-"",
-"Me gusta cuando te emocionas.",
-"Tus ojos.",
-"Tu risa.",
-"Tu voz.",
-"Tu todo.",
-"",
-"simplemente eres perfecto"
-];
-
-let i=0;
-let texto=document.getElementById("texto");
-
 function iniciar(){
-document.getElementById("intro").style.opacity="0";
-setTimeout(()=>{
 document.getElementById("intro").style.display="none";
 document.getElementById("contenido").style.display="block";
-mostrar();
-},2000);
+
+let audio = document.getElementById("musica");
+audio.play().catch(()=>{});
 }
-
-function escribir(t,cb){
-let j=0;
-texto.innerHTML="";
-let inter=setInterval(()=>{
-texto.innerHTML+=t[j];
-j++;
-if(j>=t.length){
-clearInterval(inter);
-setTimeout(cb,2500);
-}
-},60);
-}
-
-function mostrar(){
-if(i<escenas.length){
-if(escenas[i]==""){
-setTimeout(()=>{i++;mostrar();},2000);
-}else{
-escribir(escenas[i],()=>{i++;mostrar();});
-}
-}else{
-texto.innerHTML="";
-let nombre=document.getElementById("nombre");
-nombre.style.opacity="1";
-
-setTimeout(()=>{
-nombre.style.opacity="0";
-
-/* IMÁGENES UNA POR UNA */
-let f1=document.getElementById("foto1");
-f1.style.opacity="1";
-
-setTimeout(()=>{
-f1.style.opacity="0";
-let f2=document.getElementById("foto2");
-f2.style.opacity="1";
-
-setTimeout(()=>{
-f2.style.opacity="0";
-let f3=document.getElementById("foto3");
-f3.style.opacity="1";
-
-setTimeout(()=>{
-f3.style.opacity="0";
-let f4=document.getElementById("foto4");
-f4.style.opacity="1";
-
-setTimeout(()=>{
-f4.style.opacity="0";
-let f5=document.getElementById("foto5");
-f5.style.opacity="1";
-
-setTimeout(()=>{
-f5.style.opacity="0";
-
-/* CARTA */
-let carta=document.getElementById("carta");
-carta.style.opacity="1";
-carta.style.transform="translate(-50%,-50%) scale(1)";
-
-setTimeout(()=>{
-/* FINAL */
-let fin=document.getElementById("final");
-fin.style.opacity="1";
-
-setTimeout(()=>{
-/* DESPEDIDA */
-let despedida=document.getElementById("despedida");
-despedida.style.opacity="1";
-
-/* POLLITO QUE SE DESPIDE */
-let p=document.createElement("div");
-p.className="pollito";
-p.innerHTML="🐥";
-p.style.left="50%";
-p.style.top="60%";
-document.body.appendChild(p);
-
-setTimeout(()=>{
-p.style.transform="translateY(-200px)";
-p.style.opacity="0";
-},2000);
-
-},4000);
-
-},4000);
-
-},5000);
-
-},5000);
-
-},5000);
-
-},5000);
-
-},4000);
-}
-}
-
-function contador(){
-let inicio=new Date("2026-01-06");
-let hoy=new Date();
-let dias=Math.floor((hoy-inicio)/(1000*60*60*24));
-document.getElementById("contador").innerHTML=
-"Han pasado "+dias+" días desde que el universo decidió ✨";
-}
-contador();
-setInterval(contador,86400000);
-
-/* POLLITOS FLOTA */
-for(let p=0;p<25;p++){
-let pollito=document.createElement("div");
-pollito.className="pollito";
-pollito.innerHTML="🐥";
-pollito.style.left=Math.random()*100+"%";
-pollito.style.top=Math.random()*100+"%";
-document.body.appendChild(pollito);
-}
-
-/* ESTRELLAS */
-let canvas=document.getElementById("estrellas");
-let ctx=canvas.getContext("2d");
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-
-let estrellas=[];
-for(let s=0;s<400;s++){
-estrellas.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-r:Math.random()*1.5,
-a:Math.random()
-});
-}
-
-function animar(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-estrellas.forEach(e=>{
-ctx.beginPath();
-ctx.fillStyle="rgba(255,255,255,"+e.a+")";
-ctx.arc(e.x,e.y,e.r,0,Math.PI*2);
-ctx.fill();
-e.a+= (Math.random()-0.5)*0.05;
-if(e.a<0) e.a=0;
-if(e.a>1) e.a=1;
-});
-requestAnimationFrame(animar);
-}
-animar();
-
 </script>
 
 </body>
