@@ -76,7 +76,7 @@ transition:4s;
 text-shadow:0 0 40px rgba(255,255,255,.8);
 }
 
-/* Cinco imágenes */
+/* IMÁGENES */
 .foto{
 position:absolute;
 top:50%;
@@ -98,7 +98,7 @@ background-position:center;
 #foto4{background-image:url('pio3.jpg');}
 #foto5{background-image:url('pio4.jpg');}
 
-/* Carta final */
+/* CARTA */
 .carta{
 position:absolute;
 top:50%;
@@ -115,7 +115,7 @@ opacity:0;
 transition:4s;
 }
 
-/* Cierre final */
+/* FINAL */
 #final{
 position:absolute;
 top:50%;
@@ -127,6 +127,7 @@ opacity:0;
 transition:3s;
 }
 
+/* DESPEDIDA */
 #despedida{
 position:absolute;
 top:50%;
@@ -137,7 +138,7 @@ opacity:0;
 transition:3s;
 }
 
-/* Pollito */
+/* POLLITO */
 .pollito{
 position:absolute;
 font-size:24px;
@@ -183,13 +184,14 @@ border:0;
 
 <div class="nombre" id="nombre">Pio Pio ❤️🐥</div>
 
-<!-- Cinco imágenes -->
+<!-- IMÁGENES -->
 <div class="foto" id="foto1"></div>
 <div class="foto" id="foto2"></div>
 <div class="foto" id="foto3"></div>
 <div class="foto" id="foto4"></div>
 <div class="foto" id="foto5"></div>
 
+<!-- CARTA -->
 <div class="carta" id="carta">
 <h3>Destino</h3>
 <p>
@@ -201,12 +203,14 @@ Y te elegiría en cualquier universo.
 </p>
 </div>
 
+<!-- FINAL -->
 <div id="final">
 Fin.<br>
 Esto no termina aquí.<br>
 El sentimiento permanece.
 </div>
 
+<!-- DESPEDIDA DEL POLLITO -->
 <div id="despedida">
 🐥<br>
 El pollito se despide…<br>
@@ -215,7 +219,7 @@ Gracias por acompañarlo.
 
 <div id="contador"></div>
 
-<!-- Música de fondo -->
+<!-- MÚSICA -->
 <iframe
 src="https://www.youtube.com/embed/L4RPMSW0Gvc?enablejsapi=1&autoplay=1&loop=1&playlist=L4RPMSW0Gvc&controls=0"
 allow="autoplay">
@@ -284,7 +288,7 @@ nombre.style.opacity="1";
 setTimeout(()=>{
 nombre.style.opacity="0";
 
-/* Transición de imágenes */
+/* IMÁGENES UNA POR UNA */
 let f1=document.getElementById("foto1");
 f1.style.opacity="1";
 
@@ -311,22 +315,22 @@ f5.style.opacity="1";
 setTimeout(()=>{
 f5.style.opacity="0";
 
-/* Carta */
+/* CARTA */
 let carta=document.getElementById("carta");
 carta.style.opacity="1";
 carta.style.transform="translate(-50%,-50%) scale(1)";
 
 setTimeout(()=>{
-/* Cierre */
+/* FINAL */
 let fin=document.getElementById("final");
 fin.style.opacity="1";
 
 setTimeout(()=>{
-/* Despedida del pollito */
+/* DESPEDIDA */
 let despedida=document.getElementById("despedida");
 despedida.style.opacity="1";
 
-/* Pollito que se va */
+/* POLLITO QUE SE DESPIDE */
 let p=document.createElement("div");
 p.className="pollito";
 p.innerHTML="🐥";
@@ -365,7 +369,7 @@ document.getElementById("contador").innerHTML=
 contador();
 setInterval(contador,86400000);
 
-/* Pollitos flotando */
+/* POLLITOS FLOTA */
 for(let p=0;p<25;p++){
 let pollito=document.createElement("div");
 pollito.className="pollito";
@@ -375,7 +379,7 @@ pollito.style.top=Math.random()*100+"%";
 document.body.appendChild(pollito);
 }
 
-/* Estrellas */
+/* ESTRELLAS */
 let canvas=document.getElementById("estrellas");
 let ctx=canvas.getContext("2d");
 canvas.width=window.innerWidth;
