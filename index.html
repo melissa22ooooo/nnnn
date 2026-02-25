@@ -76,7 +76,6 @@ transition:4s;
 text-shadow:0 0 40px rgba(255,255,255,.8);
 }
 
-/* Cinco imágenes */
 .foto{
 position:absolute;
 top:50%;
@@ -98,7 +97,6 @@ background-position:center;
 #foto4{background-image:url('pio3.jpg');}
 #foto5{background-image:url('pio4.jpg');}
 
-/* Carta final */
 .carta{
 position:absolute;
 top:50%;
@@ -160,7 +158,6 @@ border:0;
 
 <div class="nombre" id="nombre">Pio Pio ❤️🐥</div>
 
-<!-- Cinco imágenes -->
 <div class="foto" id="foto1"></div>
 <div class="foto" id="foto2"></div>
 <div class="foto" id="foto3"></div>
@@ -180,8 +177,9 @@ Y te elegiría en cualquier universo.
 
 <div id="contador"></div>
 
+<!-- Música de fondo con el nuevo link -->
 <iframe
-src="https://www.youtube.com/embed/WBvMmwTLmD8?enablejsapi=1&autoplay=1&loop=1&playlist=WBvMmwTLmD8&controls=0"
+src="https://www.youtube.com/embed/L4RPMSW0Gvc?enablejsapi=1&autoplay=1&loop=1&playlist=L4RPMSW0Gvc&controls=0"
 allow="autoplay">
 </iframe>
 
@@ -248,7 +246,6 @@ nombre.style.opacity="1";
 setTimeout(()=>{
 nombre.style.opacity="0";
 
-/* Transición de imágenes una por una */
 let f1=document.getElementById("foto1");
 f1.style.opacity="1";
 
@@ -301,7 +298,6 @@ document.getElementById("contador").innerHTML=
 contador();
 setInterval(contador,86400000);
 
-/* Pollitos flotando */
 for(let p=0;p<25;p++){
 let pollito=document.createElement("div");
 pollito.className="pollito";
@@ -311,7 +307,6 @@ pollito.style.top=Math.random()*100+"%";
 document.body.appendChild(pollito);
 }
 
-/* Estrellas */
 let canvas=document.getElementById("estrellas");
 let ctx=canvas.getContext("2d");
 canvas.width=window.innerWidth;
@@ -345,4 +340,4 @@ animar();
 </script>
 
 </body>
-</html>
+  </html>
